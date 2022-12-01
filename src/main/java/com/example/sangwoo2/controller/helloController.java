@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @Controller
 public class helloController {
   
+  // html 방식
   @GetMapping("hello")
   public String hello(Model model) {
     model.addAttribute("data", "spring!!!!");
@@ -16,12 +17,22 @@ public class helloController {
     // Controller에서 ViewResolver가 /templates 밑에 return + .html 위치를 mappin한다
   }
 
+
+
+
+
+  // MVC template 방식
   @GetMapping("hello-mvc")
   public String helloMVC(@RequestParam("name") String name, Model model) {
     model.addAttribute("name", name);
     return "hello-template";
   }
 
+
+
+
+
+  // API 방식
   @GetMapping("hello-spring")
   @ResponseBody // Http의 Header부와 Body부에서 body부에 return 데이터를 직접 넣어주겠다.
   // view 이런거 없이 hello + 입력한 문자가 그대로 출력됨 (String Converter)
